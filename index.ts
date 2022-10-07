@@ -1,4 +1,4 @@
-class Libros {
+class Libro {
     private codigo: string;
     private categorias:string;
     private titulo: string;
@@ -47,15 +47,15 @@ class Libros {
         this.cantidad = cantidadParam;
     }
 }
-class Gestorlibros  {
-    public listadodeLibros: Libros[];
-    constructor(listadodeLibrosParam:Libros[]) {
+class Gestorlibro  {
+    public listadodeLibro: Libro[];
+    constructor(listadodeLibrosParam:Libro[]) {
        this.listadodeLibros = listadodeLibrosParam;
         
      
     }
 
-    public consultaLibro(librosPar:Libros):boolean{
+    public consultaLibro(librosPar:Libro):boolean{
         let respuesta:boolean = false;
         for(let i:number = 0 ; i < this.listadodeLibros.length ; i++){
             if(this.listadodeLibros[i].obtenerCodigo() === librosPar.obtenerCodigo()){
@@ -65,12 +65,12 @@ class Gestorlibros  {
         return respuesta; 
     }
 
-    public agregarLibro(libroParametro:Libros):void{
+    public agregarLibro(libroParametro:Libro):void{
          this.listadodeLibros.push(libroParametro);
          console.log('Se agrego el libro correctamente');
     }   
 
-    public eliminarLibro(paramLibro:Libros):void{
+    public eliminarLibro(paramLibro:Libro):void{
        let encontrado:boolean = false; 
        for(let i:number = 0; i < this.listadodeLibros.length;i++){
           if (this.listadodeLibros[i].obtenerCodigo() === paramLibro.obtenerCodigo()){
@@ -85,10 +85,10 @@ class Gestorlibros  {
        }
     }
 
-    public ModificardatoLibro(posicion:number,codigoLibroParam:string,autorParam:string,cantidadparam:number):void{
-      this.listadodeLibros[posicion].setearCodigo(codigoLibroParam);
-      this.listadodeLibros[posicion].setearAutor(autorParam);
-      this.listadodeLibros[posicion].setearCantidad(cantidadparam);
+    public modificardatoLibro(posicion:number,codigoLibroParam:string,autorParam:string,cantidadparam:number):void{
+      this.listadodeLibro[posicion].setearCodigo(codigoLibroParam);
+      this.listadodeLibro[posicion].setearAutor(autorParam);
+      this.listadodeLibro[posicion].setearCantidad(cantidadparam);
       console.log('El Libro se modificó correctamente')
     }
 
@@ -100,12 +100,12 @@ class Gestorlibros  {
 
 //SE CREAN LOS LIBROS
 
-let libro1:Libros = new Libros('L3432','Novela','El Dino','Felipa Torales',45);
-let libro2:Libros = new Libros('L3436','Novela','El Rey del Ganado','Roberto Fernandez',34);
-let libro3:Libros = new Libros('L3437','Romance','La flor que se marchito','Florencia Rivas',34);
-let arreglodeLibros:Libros[] = [libro1,libro2,libro3];
+let libro1:Libro = new Libro('L3432','Novela','El Dino','Felipa Torales',45);
+let libro2:Libro = new Libro('L3436','Novela','El Rey del Ganado','Roberto Fernandez',34);
+let libro3:Libro = new Libro('L3437','Romance','La flor que se marchito','Florencia Rivas',34);
+let arreglodeLibro:Libro[] = [libro1,libro2,libro3];
 //SE CREA LA GESTION DE LIBROS
-let bibliotecaAntartida:Gestorlibros = new Gestorlibros(arreglodeLibros);
+let bibliotecaAntartida:Gestorlibro = new Gestorlibro(arreglodeLibros);
 //SE BUSCA UN DETERMINADO LIBRO
 let existencia:boolean = bibliotecaAntartida.consultaLibro(libro2);
 
@@ -117,7 +117,7 @@ bibliotecaAntartida.agregarLibro(libro2);
 bibliotecaAntartida.eliminarLibro(libro1);
 console.log(bibliotecaAntartida);
 //SE MODIFICA UN LIBRO
-bibliotecaAntartida.ModificardatoLibro(0,'l3432','Felipa Castro',50);
+bibliotecaAntartida.modificardatoLibro(0,'l3432','Felipa Castro',50);
 console.log(bibliotecaAntartida);
     
 
